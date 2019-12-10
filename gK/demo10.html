@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>December 10/19: Advanced Javascript</title>
+</head>
+<body>
+    <h1>December 10/19: Advanced Javascript {call(),bind() and apply()}</h1>
+<script>
+//****************************************************call(),bind()&apply()**************************************************
+// var pokemon={
+//   firstname: "pika",
+//   lastname: "choo",
+//   getpokemon: function(){
+//       var fullname=this.firstname+" "+this.lastname;
+//       return fullname;
+//   }  
+// };
+
+// var pokemon1={
+//   firstname: "chiko",
+//   lastname: "rita",
+//   getpokemon: function(){
+//       var fullname=this.firstname+" "+this.lastname;
+//       return fullname;
+//   }  
+// };
+
+// var pokemonName=function(snack,hobby){
+//     console.log(this.getpokemon()+" I choose you!!");
+//     console.log(this.getpokemon()+" loves "+snack+" and "+hobby);
+// };
+
+// //bind()
+// var logpokemon = pokemonName.bind(pokemon);
+// logpokemon("sushi","running");
+
+// //call()
+// pokemonName.call(pokemon,"sushi","running");
+
+// //apply()
+// pokemonName.apply(pokemon,["sushi","running"]);
+
+//****************************************this keyword*******************************************************************************
+
+//"use strict";
+// function a(){
+//     console.log(this);
+// }
+// a();
+
+//*******************************************prototypes******************************************************************************
+
+//********************************************Constrctors***************************************************************
+function car(name,model,color){
+    this.name=name,
+    this.model=model,
+    this.color=color
+};
+
+var carA= new car('Swift','001','white');
+
+console.log(carA.color);
+//O/P
+
+
+    </script>
+</body>
+</html>

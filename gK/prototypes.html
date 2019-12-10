@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>December 10/19: Advanced Javascript</title>
+</head>
+<body>
+        <h1>December 10/19: Advanced Javascript {Prototypes and constructors}</h1>
+<script>
+var animal={
+    kind: "dogs"
+};
+
+var a={};
+
+a.__proto__=animal;
+console.log(a.kind);
+console.log(animal.isPrototypeOf(a));
+
+animal.kind='cats';
+console.log(a.kind);
+
+// //O/p
+// dogs
+// true
+// cats
+//.....................................Adding function to the body of the constructor...............................................
+"use strict";
+function Person(fname,lname,age){
+    this.fname=fname;
+    this.lname=lname;
+    this.age=age;
+    this.display =function(){
+        return this.fname+" "+this.lname;//here
+    }
+};
+
+var dude = new Person("gou", "kanitkar", 20);
+dude.fname='ajita';
+console.log(dude.display());
+
+//O/P
+gou kanitkar // when 'this' was not mentioned in Person->display function
+ajita kanitkar// when 'this' was mentioned in Person->display function
+
+//*****************************************Pseudo Classical inheritance in js***********************************************************
+"use strict";
+function Person(fname,lname){
+    this.fname=fname;
+    this.lname=lname;
+};
+
+Person.prototype.fullName=function()
+{
+    return this.fname+" "+this.lname;
+}
+
+function Professional(design,fname,lname)
+{
+    Person.call(this,fname,lname);
+    this.design=design;
+};
+
+Professional.prototype=Object.create(Person.prototype); // inherited te prototype of the person function to Professional function
+
+Professional.prototype.ProName=function()
+{
+    return this.design+" "+this.fname+" "+this.lname;
+}
+
+var prof=new Professional("Dr.","Gouri","Kanitkar");
+console.log(prof.ProName());
+console.log(prof.fullName())//when code o line 66 wasn't there that timr this line was unable to run as prof couldn't find fullName(), but when code on line 66 was added this line got executed as the protoype of Person was inherited (i.e. prototype was made)in Professional.
+</script>
+</body>
+</html>
